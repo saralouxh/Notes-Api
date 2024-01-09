@@ -9,5 +9,10 @@ Rails.application.routes.draw do
     get :me
     delete :logout
   end
-  resources :notes
+  resources :notes do
+    collection do
+      get :search
+    end
+  end
+  
 end

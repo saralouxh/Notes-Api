@@ -36,4 +36,11 @@ class NotesController < ApplicationController
         render json: { success: true, message: "Note deleted successfully", status: 200 }
     end
 
+    def search
+        search_term = params[:term].downcase  # assuming the search term is passed as 'term' in the query parameters
+        filtered_notes = Note.where("lower(title) LIKE ? OR lower(content) LIKE ?", "%#{search_term}%", "%#{search_term}%")
+    
+        render json: { success: true, notes: filtered_notes, status: 200 }
+    end
+
 end
