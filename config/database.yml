@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: notes-api_production
+  username: notes-api
+  password: <%= ENV['NOTES-API_DATABASE_PASSWORD'] %>
